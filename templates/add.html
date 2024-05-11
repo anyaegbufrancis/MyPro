@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main">
+    <h1>Add Player</h1>
+    <form method = "POST">
+
+      <label for="namep">Player's Name:</label>
+      <input type = "text" name = "pname">
+      <label for="pointp">player's total point:</label>
+      <input type = "number" name = "ppoints" >
+      <label for="assistp">Player's total assist:</label>
+      <input type = "number" name = "passist">
+      <label for="rebp">Player's total reb</label>
+      <input type = "number" name = "Preb">
+      <label for="Teams">Player's team:</label>
+      <select name="Teams" id="team">
+          <option value="Bucks">Milwaukee Bucks</option>
+          <option value="Celtics">Boston Celtics</option>
+          <option value="Bulls">Chicago Bulls</option>
+          <option value="Cleaves">Cleveland Cavaliers</option>
+          <option value="Pacers">Indiana Pacers</option>
+          <option value="Nuggets">Denver Nuggets</option>
+          <option value="Knicks">New York Knicks</option>
+          <option value="Pistons">Detroit Pistons</option>
+          <option value="Warriors">Golden State Warriors</option>
+          <option value="Lakers">Los Angeles Lakers</option>
+          <option value="Timberwolves">Minnesota Timberwolves</option>
+          <option value="Nets">Brooklyn Nets</option>
+          <option value="Clippers">LA Clippers</option>
+          <option value="76ers">Philadelphia 76ers</option>
+          <option value="Okc">Oklahoma City Thunder</option>
+          <option value="Portland">Portland Trail Blazers</option>
+          <option value="Mavs">Dallas Mavericks</option>
+          <option value="Phoenix">Phoenix Suns</option>
+          <option value="Kings">Sacramento Kings</option>
+          <option value="Raptors">Toronto Raptors</option>
+          <option value="Hawks">Atlanta Hawks</option>
+          <option value="Rockets">Houston Rockets</option>
+          <option value="Heats">Miami Heat</option>
+          <option value="Jazz">Utah Jazz</option>
+        </select>
+        <button class = "submit">Caculate</button>
+      </form>
+      </div>
+
+
+{% endblock %}
