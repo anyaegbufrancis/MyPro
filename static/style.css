@@ -1,0 +1,37 @@
+/* add your custom stye rules below if it conflicts with pico or bootstrap
+   add the !important property to the end of the style rule as shown in the
+   example below  */
+
+
+   .headder {
+    background-color: #C5C9E4;
+    color: #003087 !important;
+}
+
+.head {
+    background-color: #8D96C6;
+    color: #003087
+}
+
+.add {
+    text-align: center;
+}
+
+.logo {
+    width: 550px;
+    height: 550px;
+}
+
+.main {
+    font-size: 35px;
+}
+.sumbit {
+    text-align: center;
+    color: #003087
+}
+
+
+.List {
+    background-color: #8D96C6;
+    color: #003087
+}

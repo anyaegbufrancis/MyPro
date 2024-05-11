@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="List">
+
+
+        <h1>Here Is Your List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Points</th>
+                    <th>Assists</th>
+                    <th>Rebs</th>
+                    <th>Teams</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for nba in nbas %}
+                <tr>
+                    <td name = name1>{{ nba.name }}</td>
+                    <td>{{ nba.points }}</td>
+                    <td>{{ nba.assists }}</td>
+                    <td>{{ nba.reb }}</td>
+                    <td>{{ nba.team }}</td>
+                    <td>
+                        <a href='/edit'>Info
+                            <i class="bi bi-plus-circle-fill"></i></a>
+                        <!-- <a href='/delete{{ nba.name }}'>
+                            <i class="bi bi-trash-fill"></i>
+                        </a> -->
+                        <td>
+                            <form action="/delete/{{ nba.name }}" method="post">
+                                <button type="submit"> <i class="bi bi-trash-fill"></i></button>
+                            </form>
+                        </td>
+
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+</div>
+
+
+{% endblock %}

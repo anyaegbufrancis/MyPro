@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>** Nba points**</title>
+    <!-- Add the links to pico CSS or bootstrap here -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+
+  </head>
+
+  <body>
+    <div class="head">
+      <div class= "headder">
+        <nav>
+          <ul>
+            <li><a href="/">
+                <img class="log" src="/static/Nba logo.jpg" alt="NBA LOGO" width="100" height="120">
+                <strong>Nba You</strong>
+              </a></li>
+          </ul>
+          <ul>
+            <li><a href="/base">About</a></li>
+            <li><a href="/add">Add players</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="/list"><i class="bi bi-list"></i></a></li>
+          </ul>
+        </nav>
+
+      </div>
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+
+</html>
