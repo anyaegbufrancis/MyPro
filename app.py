@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, flash
 from flask_session import Session
-import queries
+from queries import get_all_nba, add_player, delete_player, update_player, get_player_by_name
 
 app = Flask(__name__)
 
@@ -14,48 +14,51 @@ Session(app)
 
 @app.route("/")
 def index():
+    ret = get_all_nba()
     return render_template("index.html")
+
 @app.route("/base")
 def base():
     return render_template("index.html")
+
 @app.route("/add", methods = ["GET", "POST"])
 def add():
-    if request.method == "POST":
-        name = request.form.get("pname")
-        points = request.form.get("ppoints")
-        assists = request.form.get("passist")
-        reb = request.form.get("Preb")
-        teams = request.form.get("Teams")
-        add_p = queries.add_player(name, points, assists, reb, teams)
-        print(add_p)
+    if request.method == "GET":
+        return render_template("add.html")
+    elif request.method == "POST":
+        pname = request.form['pname']
+        ppoints = request.form['ppoint']
+        passists = request.form['passist']
+        preb = request.form['preb']
+        pteam = request.form['pteam']
+        add_player(pname, ppoints, passists, preb, pteam)
         return redirect("/list")
-    return render_template("add.html")
+
+
 @app.route("/list")
 def list():
-
-    text = queries.get_all_nba()
-    List  = queries.get_avg()
-    print(text)
-    print(List)
-    return render_template("list.html", nbas=text)
+    nbas = get_all_nba()
+    return render_template("list.html", nbas=nbas)
+    
 
 @app.route("/delete/<name>", methods=['POST'] )
 def delete(name):
+    delete_player(name)
+    flash(f"{name} has been deleted")
+    return redirect("/list")
 
-    print(name)
-    dele_p = queries.delete_p(name)
-    print(dele_p)
-    flash(name + " data has been removed")
-    return render_template("list.html")
-
-@app.route("/edit", methods = ["GET", "POST"])
-def edit():
+@app.route("/edit/<name>", methods=["GET", "POST"])
+def edit(name):
     if request.method == "POST":
-        name = request.form.get("pname1")
-
-
-        update = queries.upd(name, points, assists, reb, team)
-        print(update)
+        player_details = get_player_by_name(name)
+        new_name = name
+        new_points = player_details[2] if request.form.get("ppoints") == "" else request.form.get("ppoints")
+        new_assists = player_details[3] if request.form.get("passists") == "" else request.form.get("passists")
+        new_reb = player_details[4] if request.form.get("preb") == "" else request.form.get("preb")
+        new_team = player_details[5] if request.form.get("pteam") == "" else request.form.get("pteam")
+        update_player(name, new_name, new_points, new_assists, new_reb, new_team)
         return redirect("/list")
+    else:
+        player = get_player_by_name(name)
+        return render_template("edit.html", nba=player)
 
-    return render_template("edit.html")
