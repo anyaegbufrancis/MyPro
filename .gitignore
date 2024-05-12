@@ -1,0 +1,8 @@
+database.db
+project.db
+pyvenv.cfg
+lib/*
+include/*
+flask_session/*
+bin/*
+__pycache__
